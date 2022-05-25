@@ -1,5 +1,5 @@
 import {useDispatch} from "react-redux";
-import {deleteItem} from "../../redux/store";
+import {deleteItem} from "../redux/store";
 
 const DataRow = ({stockItem}) => {
     const {ticker, exchange, price, change, change_percent, dividend, last_trade_time} = stockItem
@@ -21,7 +21,9 @@ const DataRow = ({stockItem}) => {
             </div>
             <div className='price'>
                 <span className='annotation'>Price</span><br/>
+                <span style={{fontWeight: 'bold'}}>
                 $ {price}
+                </span>
             </div>
             <div>
                 <span className='annotation'>Change</span><br/>

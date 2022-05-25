@@ -1,8 +1,9 @@
 import {createStore} from "redux";
-import {reducer} from "../reducers";
+import reducer from "../reducers";
 
 export const initialState = {
-    quotes: []
+    quotes: [],
+    hiddenItems: {}
 }
 
 export function updateData(data) {

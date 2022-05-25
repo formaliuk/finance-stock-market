@@ -4,7 +4,7 @@ const http = require('http');
 const io = require('socket.io');
 const cors = require('cors');
 
-const FETCH_INTERVAL = 5000;
+let FETCH_INTERVAL = 5000;
 
 const PORT = process.env.PORT || 4000;
 
@@ -39,30 +39,32 @@ function getQuotes(socket) {
     yield: randomValue(0, 2, 2),
     last_trade_time: utcDate().toString(),
   })
-    );
-
-  socket.on('changeChecked', function () {
-        quotes.is_checked = false
-        console.log('changed')
-      }
-  )
+  );
 
   socket.emit('ticker', quotes);
-
 }
+
+let timer;
 
 function trackTickers(socket) {
   // run the first time immediately
   getQuotes(socket);
 
   // every N seconds
-  const timer = setInterval(function() {
+  timer = setInterval(function() {
     getQuotes(socket);
   }, FETCH_INTERVAL);
 
   socket.on('disconnect', function() {
     clearInterval(timer);
   });
+}
+
+function setNewInterval(socket) {
+  clearInterval(timer)
+  timer = setInterval(function() {
+    getQuotes(socket);
+  }, FETCH_INTERVAL);
 }
 
 const app = express();
@@ -75,16 +77,21 @@ const socketServer = io(server, {
   }
 });
 
+app.use(express.json())
+
 app.get('/', function(req, res) {
   res.sendFile(__dirname + '/index.html');
 });
 
 socketServer.on('connection', (socket) => {
-  console.log('connected')
   socket.on('start', () => {
     trackTickers(socket);
-    console.log('start connect')
   });
+
+  socket.on('change interval', (num) => {
+    FETCH_INTERVAL = num * 1000
+    setNewInterval(socket)
+  })
 });
 
 server.listen(PORT, () => {

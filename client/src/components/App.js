@@ -1,9 +1,9 @@
-import './App.css';
+import '../styles/App.css';
 import React, {useEffect} from "react";
-import WatchList from "../WatchList/WatchList";
+import WatchList from "./WatchList";
 import {useDispatch} from "react-redux";
 import io from "socket.io-client";
-import {updateData} from "../../redux/store";
+import {updateData} from "../redux/store";
 
 export const socket = io.connect('http://localhost:4000/');
 

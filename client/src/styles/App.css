@@ -18,17 +18,21 @@ body {
   background: linear-gradient(4deg, rgba(29,32,51,1) 0%, rgba(47,58,87,1) 100%);
   color: #eefbfb;
   box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+
 }
 
 h1 {
-  font-family: AppleGothic, serif;
-  letter-spacing: 5px;
+  background: #3c4563;
+  width: 260px;
+  padding: 15px;
+  border-radius: 20px;
+  margin: 30px auto;
+  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
 }
 
 ul {
   list-style: none;
   padding: 0;
-
 }
 
 .stock {
@@ -49,6 +53,62 @@ ul {
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 
+.ticker {
+  color: #eefbfb;
+  font-size: 0.9em;
+  font-weight: bold;
+  padding: 13px;
+  background: #4da8da;
+  border-radius: 3px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+p {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+form {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+form input {
+  height: 40px;
+  background: #3c4563;
+  padding-left: 10px;
+  color: #ffffff;
+  font: inherit;
+  border: 0;
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
+}
+
+form input:focus {
+  outline: none;
+}
+
+.submit-btn {
+  height: 42px;
+  width: 100px;
+  background: none;
+  color: inherit;
+  background: #3c4563;
+  border: 0;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+  font-size: 0.8em;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.submit-btn:active {
+  box-shadow: none;
+}
+
 .delete-btn {
   height: 31px;
   background: none;
@@ -66,24 +126,6 @@ ul {
 
 .delete-btn:active {
   box-shadow: none;
-}
-
-.ticker {
-  color: #eefbfb;
-  font-size: 0.9em;
-  font-weight: bold;
-  padding: 13px;
-  background: #4da8da;
-  border-radius: 3px;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-}
-
-.price_increase {
-  color: #7cbb00;
-}
-
-.price_decrease {
-  color: #e82127;
 }
 
 .annotation {
@@ -115,25 +157,65 @@ ul {
   background: #e82127;
 }
 
+@media screen and (max-width: 1150px) {
+  .wrapper {
+    transform: translate(-50%, -40%);
+  }
+}
+
 @media screen and (max-width: 1048px) {
+  .wrapper {
+    transform: translate(-50%, -20%);
+  }
+
+  h1 {
+    font-size: 1.8em;
+  }
+
   .stock {
     grid-template-columns: 25% 25% 25% 25%;
   }
 }
 
 @media screen and (max-width: 768px) {
+  h1 {
+    font-size: 1.5em;
+  }
+
   .stock {
     grid-template-columns: 33% 33% 33%;
   }
 }
 
 @media screen and (max-width: 520px) {
+  .wrapper {
+    transform: translate(-50%, -13%);
+  }
+
+  h1 {
+    width: 60%;
+  }
+
   .stock {
     grid-template-columns: 50% 50%;
+  }
+
+  form {
+    width: 60vw;
+    margin: 20px auto;
+  }
+
+  form input {
+    width: 30vw;
+    font-size: 0.8em;
   }
 }
 
 @media screen and (max-width: 368px) {
+  .wrapper {
+    transform: translate(-50%, -8%);
+  }
+
   .stock {
     grid-template-columns: 100%;
   }

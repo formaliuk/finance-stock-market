@@ -1,6 +1,6 @@
 import {initialState} from "../store";
 
-export const reducer = (state = initialState, action) => {
+const reducer = (state = initialState, action) => {
     switch (action.type) {
         case 'UPDATE_DATA':
             return {
@@ -19,3 +19,5 @@ export const reducer = (state = initialState, action) => {
             return state
     }
 }
+
+export default reducer

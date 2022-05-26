@@ -1,17 +1,17 @@
-import {createStore} from "redux";
-import reducer from "../reducers";
+import { createStore } from 'redux';
+import reducer from '../reducers';
 
 export const initialState = {
-    quotes: [],
-    hiddenItems: {}
-}
+  quotes: [],
+  hiddenItems: {}
+};
 
 export function updateData(data) {
-    return { type: 'UPDATE_DATA', payload: data }
+  return { type: 'UPDATE_DATA', payload: data };
 }
 
 export function deleteItem(data) {
-    return { type: 'DELETE_ITEM', payload: data }
+  return { type: 'DELETE_ITEM', payload: data };
 }
 
-export const store = createStore(reducer, initialState)
+export const store = createStore(reducer, initialState);

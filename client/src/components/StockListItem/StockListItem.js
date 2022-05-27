@@ -1,27 +1,22 @@
-import { useDispatch } from 'react-redux';
-import { deleteItem } from '../redux/store';
+import { useDeleteStock } from "../../hooks/useDeleteStock";
+import '../../components/StockListItem/StockListItem.css'
 
-const DataRow = ({ stockItem }) => {
+export const StockListItem = ({ stockItem }) => {
   const { ticker, exchange, price, change, change_percent, dividend, last_trade_time } = stockItem;
-
-  const dispatch = useDispatch();
-
-  function deleteStock(data) {
-    dispatch(deleteItem(data));
-  }
+  const deleteStockHandler = useDeleteStock(ticker)
 
   return (
     <div className="stock">
       <div className={`ticker ticker_${ticker}`}>{ticker}</div>
-      <div className="exchange">
+      <div>
         <span className="annotation">Market</span>
         <br />
         {exchange}
       </div>
-      <div className="price">
+      <div>
         <span className="annotation">Price</span>
         <br />
-        <span style={{ fontWeight: 'bold' }}>$ {price}</span>
+        <span className='price'>$ {price}</span>
       </div>
       <div>
         <span className="annotation">Change</span>
@@ -48,11 +43,9 @@ const DataRow = ({ stockItem }) => {
         <br />
         {new Date(last_trade_time).toLocaleTimeString()}
       </div>
-      <button className="delete-btn" onClick={() => deleteStock(ticker)}>
+      <button className="delete-btn" onClick={deleteStockHandler}>
         Delete
       </button>
     </div>
   );
 };
-
-export default DataRow;

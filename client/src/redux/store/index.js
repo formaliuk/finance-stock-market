@@ -1,9 +1,9 @@
 import { createStore } from 'redux';
 import reducer from '../reducers';
 
-export const initialState = {
+const initialState = {
   quotes: [],
-  hiddenItems: {}
+  hiddenItems: {},
 };
 
 export const store = createStore(reducer, initialState);

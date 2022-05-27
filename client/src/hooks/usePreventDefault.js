@@ -1,3 +1,1 @@
-export const usePreventDefault = function() {
-  return (e) => e.preventDefault(); 
-}
+export const usePreventDefault = () => (e) => e.preventDefault();

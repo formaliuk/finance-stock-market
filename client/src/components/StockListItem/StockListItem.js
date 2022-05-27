@@ -1,9 +1,11 @@
-import { useDeleteStock } from "../../hooks/useDeleteStock";
-import '../../components/StockListItem/StockListItem.css'
+import { useDeleteStock } from '../../hooks/useDeleteStock';
+import './StockListItem.css';
 
 export const StockListItem = ({ stockItem }) => {
-  const { ticker, exchange, price, change, change_percent, dividend, last_trade_time } = stockItem;
-  const deleteStockHandler = useDeleteStock(ticker)
+  const {
+    ticker, exchange, price, change, change_percent, dividend, last_trade_time,
+  } = stockItem;
+  const deleteStockHandler = useDeleteStock(ticker);
 
   return (
     <div className="stock">
@@ -16,7 +18,10 @@ export const StockListItem = ({ stockItem }) => {
       <div>
         <span className="annotation">Price</span>
         <br />
-        <span className='price'>$ {price}</span>
+        <span className="price">
+          $
+          {price}
+        </span>
       </div>
       <div>
         <span className="annotation">Change</span>
@@ -26,7 +31,8 @@ export const StockListItem = ({ stockItem }) => {
       <div>
         <span className="annotation">Change in percents</span>
         <br />
-        {change_percent}%
+        {change_percent}
+        %
       </div>
       <div>
         <span className="annotation">Dividends</span>
@@ -36,14 +42,14 @@ export const StockListItem = ({ stockItem }) => {
       <div>
         <span className="annotation">Yield</span>
         <br />
-        {stockItem['yield']}
+        {stockItem.yield}
       </div>
       <div>
         <span className="annotation">Trade time:</span>
         <br />
         {new Date(last_trade_time).toLocaleTimeString()}
       </div>
-      <button className="delete-btn" onClick={deleteStockHandler}>
+      <button className="delete-btn" onClick={deleteStockHandler} type="button">
         Delete
       </button>
     </div>

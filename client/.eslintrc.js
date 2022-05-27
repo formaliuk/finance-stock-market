@@ -2,24 +2,24 @@ module.exports = {
   env: {
     browser: true,
     node: true,
-    es2021: true
+    es2021: true,
+    es6: true,
   },
-  extends: [
-    'plugin:react/recommended',
-    'eslint:recommended',
-    'plugin:react/recommended',
-    'plugin:prettier/recommended'
-  ],
-  parserOptions: {
-    ecmaFeatures: {
-      jsx: true
-    },
-    ecmaVersion: 'latest',
-    sourceType: 'module'
-  },
+  parser: 'babel-eslint',
+  extends: ['airbnb'],
   plugins: ['react'],
   rules: {
     'react/react-in-jsx-scope': 'off',
-    'react/prop-types': 'off'
-  }
+    'react/prop-types': 'off',
+    camelcase: 'off',
+    'no-alert': 'off',
+    'import/prefer-default-export': 'off',
+    'react/jsx-filename-extension': 'off',
+    'react/function-component-definition': 'off',
+    // 'object-curly-newline': 'off',
+    // 'import/no-extraneous-dependencies': 'off',
+    // 'default-param-last': 'off',
+    // 'dot-notation': 'off',
+    // 'react/jsx-one-expression-per-line': 'off',
+  },
 };

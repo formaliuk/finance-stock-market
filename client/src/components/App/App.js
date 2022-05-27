@@ -1,10 +1,10 @@
 import React from 'react';
-import { useInitSocketConnection } from "../../hooks/useInitSocketConnection";
+import { useInitSocketConnection } from '../../hooks/useInitSocketConnection';
 import { StockMarket } from '../StockMarket/StockMarket';
 import './App.css';
 
 function App() {
-  useInitSocketConnection()
+  useInitSocketConnection();
 
   return (
     <div className="App">

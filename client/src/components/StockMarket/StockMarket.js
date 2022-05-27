@@ -1,8 +1,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { StockList } from "../StockList/StockList";
-import { IntervalForm } from "../IntervalForm/IntervalForm";
-import './StockMarket.css'
+import { StockList } from '../StockList/StockList';
+import { IntervalForm } from '../IntervalForm/IntervalForm';
+import './StockMarket.css';
 
 export const StockMarket = () => {
   const quotes = useSelector((state) => state.quotes);
